@@ -5,10 +5,11 @@ metadata:
   labels:
     app: backend
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - port: 4000
     targetPort: 4000
+    nodePort: 30007
     protocol: TCP
   selector:
     app: backend
