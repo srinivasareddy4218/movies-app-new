@@ -7,5 +7,5 @@ const getProtocol = () => window.location.protocol;
 //const getBackend = () => getProtocol() + "//" + BACKEND_NAME + getDomain();
 
 export const config = {
-  baseURL: "104.154.222.4:30201"
+  baseURL: "104.154.222.4:80"
   };
