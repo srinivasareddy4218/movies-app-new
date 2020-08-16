@@ -11,7 +11,7 @@ pipeline {
         }
         stage('DockerHub Push'){
             steps{
-               withCredentials([string(credentialsId: 'sree-dockerpwd', variable: 'sample')]) {
+               withCredentials([string(credentialsId: 'sree-dockerhub', variable: 'sample')]) {
                     sh "sudo docker login -u srinivasareddy4218 -p Sree@4218"
                     sh "sudo docker push srinivasareddy4218/movies-app:${BUILD_ID}"
 		     sh "sudo docker push srinivasareddy4218/frontend:${BUILD_ID} "  
