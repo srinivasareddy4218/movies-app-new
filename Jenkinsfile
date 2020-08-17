@@ -4,7 +4,7 @@ pipeline {
      stages{
         stage('Build Docker Image'){
             steps{
-                sh "sudo docker  . -t srinivasareddy4218/movies-app:${BUILD_ID} "
+                sh "sudo docker build . -t srinivasareddy4218/movies-app:${BUILD_ID} "
 		sh "sudo docker build . -t srinivasareddy4218/frontend:${BUILD_ID} "
 	        sh "sudo docker build . -t srinivasareddy4218/backend:${BUILD_ID} "
             }
