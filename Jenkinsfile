@@ -62,7 +62,7 @@ pipeline {
         }
 
         always {
-            step([$class: 'Mailer',notifyEveryUnstableBuild: true,recipients: "manibabu.engg@gmail.com", sarikatla@miraclesoft.com sendToIndividuals: true])
+            step([$class: 'Mailer',notifyEveryUnstableBuild: true,recipients: "manibabu.engg@gmail.com, sarikatla@miraclesoft.com" sendToIndividuals: true])
         }
     }
    }
