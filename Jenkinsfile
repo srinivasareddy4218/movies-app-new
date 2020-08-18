@@ -21,12 +21,13 @@ pipeline {
         }
         stage("Deploy To Kuberates Cluster"){
 		steps{	
-	 withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-         sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
-         sh "gcloud config set project mssdevops-284216"
-         sh "gcloud config set compute/zone us-central1-c"
-         sh "gcloud config set compute/region us-central1"
-         sh "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project mssdevops-284216"			
+			sshagent(['azure_kubernetes']){
+	//withCredentials([file(credentialsId: 'demo-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+         //sh "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
+         //sh "gcloud config set project mssdevops-284216"
+         //sh "gcloud config set compute/zone us-central1-c"
+         //sh "gcloud config set compute/region us-central1"
+         //sh "gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project mssdevops-284216"			
           /**frontend **/			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-deployment.yaml"
 	  sh " kubectl apply -f frontend/deployment/frontend-deployment.yaml -n msslabs"
